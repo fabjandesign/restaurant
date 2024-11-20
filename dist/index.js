@@ -34,5 +34,37 @@
     const name = "Mateusz Fabjan12";
     greetUser(name);
   });
+  var links = document.querySelectorAll(".category-link");
+  var categories = document.querySelectorAll(".menu-category");
+  var highlightActiveCategory = () => {
+    let activeCategory = "";
+    categories.forEach((category) => {
+      const rect = category.getBoundingClientRect();
+      if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+        activeCategory = category.id;
+      }
+    });
+    links.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${activeCategory}`) {
+        link.classList.add("active");
+      }
+    });
+  };
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href")?.substring(1) || "";
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 70,
+          // Ustawienie offsetu od góry
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+  window.addEventListener("scroll", highlightActiveCategory);
 })();
 //# sourceMappingURL=index.js.map
