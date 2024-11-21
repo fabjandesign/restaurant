@@ -6662,7 +6662,7 @@
   cards.forEach((card) => {
     gsapWithCSS.from(card, {
       opacity: 0,
-      y: 50,
+      y: 40,
       // Przesunięcie o 50px w dół
       duration: 0.5,
       // Czas trwania animacji

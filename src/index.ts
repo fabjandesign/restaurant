@@ -89,7 +89,7 @@ categories.forEach((category: HTMLElement) => {
 cards.forEach((card) => {
   gsap.from(card, {
     opacity: 0,
-    y: 50, // Przesunięcie o 50px w dół
+    y: 40, // Przesunięcie o 50px w dół
     duration: 0.5, // Czas trwania animacji
     scrollTrigger: {
       trigger: card,
