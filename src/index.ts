@@ -93,8 +93,8 @@ cards.forEach((card) => {
     duration: 0.5, // Czas trwania animacji
     scrollTrigger: {
       trigger: card,
-      start: 'top 80%', // Animacja rozpoczyna się, gdy sekcja jest w 80% wysokości widocznego obszaru
-      end: 'bottom 20%', // Kończy się, gdy sekcja osiągnie 20% wysokości widocznego obszaru
+      start: 'top 90%', // Animacja rozpoczyna się, gdy sekcja jest w 80% wysokości widocznego obszaru
+      end: 'bottom 60%', // Kończy się, gdy sekcja osiągnie 20% wysokości widocznego obszaru
       scrub: true, // Animacja płynna, powiązana z przewijaniem
     },
   });
