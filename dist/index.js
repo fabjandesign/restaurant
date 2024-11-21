@@ -6668,7 +6668,7 @@
       // Czas trwania animacji
       scrollTrigger: {
         trigger: card,
-        start: "top 95%",
+        start: "top 94%",
         // Animacja rozpoczyna się, gdy sekcja jest w 80% wysokości widocznego obszaru
         end: "bottom 60%",
         // Kończy się, gdy sekcja osiągnie 20% wysokości widocznego obszaru
