@@ -34,6 +34,8 @@ const categories = gsap.utils.toArray('.menu_category') as HTMLElement[];
 const navbarHeight =
   document.querySelector('.menu_section_nav_mobile').offsetHeight +
   document.querySelector('.menu_category_nav_mobile').offsetHeight;
+const headings = gsap.utils.toArray('.heading_menu_category') as HTMLElement[];
+const cards = gsap.utils.toArray('.card') as HTMLElement[];
 
 // Funkcja do podświetlania aktywnej kategorii
 const highlightActiveCategory = (categoryId: string): void => {
@@ -84,13 +86,13 @@ categories.forEach((category: HTMLElement) => {
 });
 
 // Dodanie animacji do sekcji podczas przewijania
-categories.forEach((category) => {
-  gsap.from(category, {
+cards.forEach((card) => {
+  gsap.from(card, {
     opacity: 0,
     y: 50, // Przesunięcie o 50px w dół
     duration: 0.5, // Czas trwania animacji
     scrollTrigger: {
-      trigger: category,
+      trigger: card,
       start: 'top 80%', // Animacja rozpoczyna się, gdy sekcja jest w 80% wysokości widocznego obszaru
       end: 'bottom 20%', // Kończy się, gdy sekcja osiągnie 20% wysokości widocznego obszaru
       scrub: true, // Animacja płynna, powiązana z przewijaniem

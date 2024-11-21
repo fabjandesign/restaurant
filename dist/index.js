@@ -6615,6 +6615,8 @@
   var links = document.querySelectorAll(".menu_nav_link");
   var categories = gsapWithCSS.utils.toArray(".menu_category");
   var navbarHeight = document.querySelector(".menu_section_nav_mobile").offsetHeight + document.querySelector(".menu_category_nav_mobile").offsetHeight;
+  var headings = gsapWithCSS.utils.toArray(".heading_menu_category");
+  var cards = gsapWithCSS.utils.toArray(".card");
   var highlightActiveCategory = (categoryId) => {
     links.forEach((link) => {
       link.classList.remove("active");
@@ -6657,15 +6659,15 @@
       }
     });
   });
-  categories.forEach((category) => {
-    gsapWithCSS.from(category, {
+  cards.forEach((card) => {
+    gsapWithCSS.from(card, {
       opacity: 0,
       y: 50,
       // Przesunięcie o 50px w dół
       duration: 0.5,
       // Czas trwania animacji
       scrollTrigger: {
-        trigger: category,
+        trigger: card,
         start: "top 80%",
         // Animacja rozpoczyna się, gdy sekcja jest w 80% wysokości widocznego obszaru
         end: "bottom 20%",
