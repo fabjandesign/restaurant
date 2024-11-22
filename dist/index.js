@@ -6615,8 +6615,6 @@
   var links = document.querySelectorAll(".menu_nav_link");
   var categories = gsapWithCSS.utils.toArray(".menu_category");
   var navbarHeight = document.querySelector(".menu_section_nav_mobile").offsetHeight + document.querySelector(".menu_category_nav_mobile").offsetHeight;
-  var headings = gsapWithCSS.utils.toArray(".heading_menu_category");
-  var cards = gsapWithCSS.utils.toArray(".card");
   var highlightActiveCategory = (categoryId) => {
     links.forEach((link) => {
       link.classList.remove("active");
@@ -6624,7 +6622,28 @@
         link.classList.add("active");
       }
     });
+    centerActiveLink();
   };
+  function centerActiveLink() {
+    const navWrapper = document.querySelector(".menu_section");
+    console.log(navWrapper);
+    const wrapper = navWrapper?.querySelector(".category-list.no-scrollbar");
+    const activeLink = navWrapper?.querySelector(".menu_nav_link.active");
+    if (wrapper && activeLink) {
+      const wrapperRect = wrapper.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
+      console.log("centerActiveLink");
+      console.log("wrapper: " + wrapper);
+      console.log("activeLink: " + activeLink);
+      console.log("wrapperRect: " + wrapperRect.width);
+      console.log("linkRect: " + linkRect.width);
+      const offset = linkRect.left - wrapperRect.left - wrapperRect.width / 2 + linkRect.width / 2;
+      wrapper.scrollTo({
+        left: wrapper.scrollLeft + offset,
+        behavior: "smooth"
+      });
+    }
+  }
   var currentSection = null;
   categories.forEach((category) => {
     const categoryId = category.id;
@@ -6656,24 +6675,6 @@
           highlightActiveCategory("");
           currentSection = null;
         }
-      }
-    });
-  });
-  cards.forEach((card) => {
-    gsapWithCSS.from(card, {
-      opacity: 0,
-      y: 40,
-      // Przesunięcie o 50px w dół
-      duration: 0.5,
-      // Czas trwania animacji
-      scrollTrigger: {
-        trigger: card,
-        start: "top 94%",
-        // Animacja rozpoczyna się, gdy sekcja jest w 80% wysokości widocznego obszaru
-        end: "bottom 60%",
-        // Kończy się, gdy sekcja osiągnie 20% wysokości widocznego obszaru
-        scrub: true
-        // Animacja płynna, powiązana z przewijaniem
       }
     });
   });
